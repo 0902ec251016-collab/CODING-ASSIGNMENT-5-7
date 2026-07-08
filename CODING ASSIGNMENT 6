@@ -1,0 +1,34 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    double humidity, temperature, pH;
+    string saltPresence;
+
+    // Input values
+    cout << "Enter Relative Humidity (%): ";
+    cin >> humidity;
+    cout << "Enter Temperature (°C): ";
+    cin >> temperature;
+    cout << "Enter pH: ";
+    cin >> pH;
+    cout << "Salt Presence (Yes/No): ";
+    cin >> saltPresence;
+
+    string risk;
+
+    // Logical conditions for corrosion risk
+    if (humidity > 70 && temperature > 30 && (pH < 4 || pH > 9) && saltPresence == "Yes") {
+        risk = "High";
+    } else if ((humidity > 50 && temperature > 25) || (pH < 5 || pH > 8) || saltPresence == "Yes") {
+        risk = "Moderate";
+    } else {
+        risk = "Low";
+    }
+
+    // Output result
+    cout << "\nPredicted Corrosion Risk: " << risk << endl;
+
+    return 0;
+}
