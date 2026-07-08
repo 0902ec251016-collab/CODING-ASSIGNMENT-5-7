@@ -1,0 +1,62 @@
+#include <iostream>
+using namespace std;
+
+struct Polymer {
+    string name;
+    string products;
+    string recyclability;
+    string remarks;
+};
+
+Polymer getPolymerInfo(int code) {
+    switch(code) {
+        case 1: return {"PET (Polyethylene Terephthalate)", 
+                        "Soft drink bottles, food packaging", 
+                        "Widely recyclable", 
+                        "Can release microplastics if mismanaged"};
+        case 2: return {"HDPE (High-Density Polyethylene)", 
+                        "Milk jugs, detergent bottles, pipes", 
+                        "Widely recyclable", 
+                        "Durable, low environmental impact if recycled"};
+        case 3: return {"PVC (Polyvinyl Chloride)", 
+                        "Pipes, window frames, flooring", 
+                        "Difficult to recycle", 
+                        "Releases toxic chlorine compounds when burned"};
+        case 4: return {"LDPE (Low-Density Polyethylene)", 
+                        "Plastic bags, film wrap, squeeze bottles", 
+                        "Limited recyclability", 
+                        "Often ends up in landfills or oceans"};
+        case 5: return {"PP (Polypropylene)", 
+                        "Food containers, bottle caps, automotive parts", 
+                        "Recyclable but less common", 
+                        "Resistant to chemicals, lightweight"};
+        case 6: return {"PS (Polystyrene)", 
+                        "Disposable cups, plates, packaging foam", 
+                        "Rarely recycled", 
+                        "Breaks into microplastics, harmful to marine life"};
+        case 7: return {"Other (Mixed Plastics, e.g., Polycarbonate, Nylon)", 
+                        "Baby bottles, electronics, medical equipment", 
+                        "Not easily recyclable", 
+                        "May contain BPA or other harmful additives"};
+        default: return {"Unknown", "-", "-", "-"};
+    }
+}
+
+int main() {
+    int code;
+    cout << "Enter Recycling Code (1–7): ";
+    cin >> code;
+
+    Polymer p = getPolymerInfo(code);
+
+    if (p.name != "Unknown") {
+        cout << "\nPolymer: " << p.name;
+        cout << "\nCommon Products: " << p.products;
+        cout << "\nRecyclability: " << p.recyclability;
+        cout << "\nEnvironmental Remarks: " << p.remarks << endl;
+    } else {
+        cout << "Invalid recycling code entered." << endl;
+    }
+
+    return 0;
+}
